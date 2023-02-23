@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Install Jackett
 RUN apt-get update && \
-	apt-get install -y --no-install-recommends curl jq; \
+	apt-get install -y --no-install-recommends ca-certificates curl jq; \
     JACKETT_VERSION="$(curl -s https://api.github.com/repos/Jackett/Jackett/releases | jq -r '.[0].name')"; \
     JACKETT_URL="https://github.com/Jackett/Jackett/releases/download/${JACKETT_VERSION}/Jackett.Binaries.LinuxAMDx64.tar.gz"; \
     curl -L "$JACKETT_URL" | tar -C /opt/ -zx; \
